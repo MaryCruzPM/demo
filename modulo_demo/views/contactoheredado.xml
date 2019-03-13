@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--para cometar-->
+<odoo>
+	<data>
+		<record id="contacto_heredado_view" model="ir.ui.view"> 
+			<field name="name">contacto.heredado.view</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"></field>
+			<field name="arch" type="xml">
+			<xpath expr="//field[@name='phone']" position="after">
+				<field name="rfcp"/>
+			</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

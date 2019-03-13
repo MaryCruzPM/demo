@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--para cometar-->
+<odoo>
+	<data>
+		<record id="persona_form_view" model="ir.ui.view">
+			<field name="name">persona.form.view</field>
+			<field name="model">persona.main_data</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<field name="foto" widget="image"
+							class="oe_left oe_avatar"/>
+							<div class="oe_title">
+								<h1>
+									<field name ="name" placeholder="nombre de la persona"></field>
+								</h1>
+							</div>
+							<group>
+								<group>
+									<field name="edad" />
+									<field name="es_casado"/>
+									<field name="datos_personales"/>
+
+								</group>
+								<group>
+									<field name="informacion_adicional"/>
+									<field name="sexo"/>
+
+								</group>
+
+							</group>
+
+							<notebook>
+								<page string="dominios de email" name="pagina_dominios">
+									<field name="dominio_email_ids" nolabel="1">
+									<tree>
+										<field name="name"/>
+										<field name="dominio_publico"/>
+									</tree>
+									</field>
+								</page>
+
+								<page string="relacion">
+
+									<group string="autos">
+										<field name="autos_ids" nolabel="1">
+											<tree editable="top">
+												<field name="name"/>
+												<field name="color"/>
+												<field name="anio"/>
+												<field name="persona_id" readonly="True"/>
+											</tree>
+										</field>
+									</group>
+								</page>
+							</notebook>
+					</sheet>
+
+				</form>
+			</field>
+
+		</record>
+
+		
+
+
+
+
+		<record id="persona_tree_view" model="ir.ui.view">
+			<field name="name">persona.tree.view</field>
+			<field name="model">persona.main_data</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="edad"/>
+					<field name="es_casado"/>
+					<field name="sexo"/>
+
+				</tree>
+			</field>
+		</record>
+
+		<record id="persona_search_view" model="ir.ui.view">
+			<field name="name"> persona.search.view</field>
+			<field name="model">persona.main_data</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<field name="edad"/>
+					<field name="es_casado"/>
+					<field name="sexo"/>
+				</search>
+
+			</field>
+		</record>
+		
+		<record id="persona_action_window" model="ir.actions.act_window">
+			<field name="name">persona</field>
+			<field name="res_model">persona.main_data</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+		<menuitem 
+			id="master_data_training" 
+			name="Traning module" 
+			sequence="50"/>
+
+
+
+		<menuitem 
+			id="personas_menuitem" 
+			name="personas" 
+			action="persona_action_window" 
+			parent="master_data_training" 
+			sequence="10"/>
+
+	</data>
+</odoo>

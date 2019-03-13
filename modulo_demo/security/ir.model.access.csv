@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+
+access_persona_main_data,access_persona_main_data,model_persona_main_data,base.group_user,1,1,1,1 
+access_personas_nombre_cuentas_email,access_personas_nombre_cuentas_email,model_personas_nombre_cuentas_email,base.group_user,1,1,1,1 
+access_personas_grado_estudio,access_personas_grado_estudio,model_personas_grado_estudio,base.group_user,1,1,1,1 
+access_personas_autos,access_personas_autos,model_personas_autos,base.group_user,1,1,1,1 
+access_computer_main_data,access_computer_main_data,model_computer_main_data,base.group_user,1,1,1,1 
+access_test_computed,access_test_computed,model_test_computed,base.group_user,1,1,1,1 
+access_personas_compranproductos,access_personas_compranproductos,model_personas_compranproductos,base.group_user,1,1,1,1 
+access_personas_tipocredito,access_personas_tipocredito,model_personas_tipocredito,base.group_user,1,1,1,1 

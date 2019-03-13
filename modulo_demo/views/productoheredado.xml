@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--para cometar-->
+<odoo>
+	<data>
+		<record id="producto_heredado_view" model="ir.ui.view"> 
+			<field name="name">producto.heredado.view</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_only_form_view"></field>
+			<field name="arch" type="xml">
+			<xpath expr="//field[@name='barcode']" position="after">
+				<field name="ganancia"/>
+	            <field name="start_date" placeholder="valor por defecto"/>
+		    </xpath>
+		     <notebook>
+								<page string="usuarios que compran producto" name="pagina_usuarios">
+									<field name="usuarios" nolabel="1">
+									
+									</field>
+								</page>
+			</notebook>
+			</field>
+		</record>
+	</data>
+</odoo>

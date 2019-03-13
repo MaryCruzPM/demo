@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--para cometar-->
+<odoo>
+	<data>
+		<record id="persona_1" model="persona.main_data">
+			<field name="name"> Maria </field>
+			<field name="edad"> 22</field>
+			<field name="es_casado">True</field>
+			<field name="sexo">femenino</field>
+		</record>
+		<record id="persona_2" model="persona.main_data">
+			<field name="name">juan </field>
+			<field name="edad">23</field>
+			<field name="es_casado"> False </field>
+			<field name="sexo">masculino</field>
+		</record>
+		<record id="persona_3" model="persona.main_data">
+			<field name="name">carlitos </field>
+			<field name="edad">30</field>
+			<field name="es_casado"> False </field>
+			<field name="sexo">masculino</field>
+		</record>
+	</data>
+</odoo>

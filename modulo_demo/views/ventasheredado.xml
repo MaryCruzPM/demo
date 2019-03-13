@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--para cometar-->
+<odoo>
+	<data>
+		<record id="ventas_heredado_view" model="ir.ui.view"> 
+			<field name="name">ventas.heredado.view</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"></field>
+			<field name="arch" type="xml">
+			
+			<notebook>
+								<page string="usuarios que compran producto" name="pagina">
+									<field name="tipo_credito" nolabel="1">
+									<tree>
+										<field name="name"/>
+										<field name="tipos"/>
+									</tree>
+									</field>
+								</page>
+			</notebook>
+	
+			<xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
+				<field name="ganancia"/>
+			</xpath>
+
+			<xpath expr="//tree/field[@name='price_unit']" position="attributes">
+				<attribute name="readonly">1</attribute>
+
+			</xpath>
+		
+			</field>
+		</record>
+	</data>
+</odoo>
