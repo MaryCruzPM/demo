@@ -23,12 +23,13 @@ class inventario(models.Model):
     start_date = fields.Date(default=fields.Date.today)
 
 ##valor por default
-    
+## agregar wizards, kanban, web service, y demas.
+
     
     usuarios=fields.Many2many(
         'res.partner',
         string="usuarios que compran producto",  
-        domain=[('customer', '=', 'True')],     
+        domain=[('customer', '=', 'True')],   #filtra con los dominios  
         )
 
     

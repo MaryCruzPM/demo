@@ -13,7 +13,7 @@
 		    </xpath>
 		     <notebook>
 								<page string="usuarios que compran producto" name="pagina_usuarios">
-									<field name="usuarios" nolabel="1">
+									<field name="usuarios" nolabel="1" >
 									
 									</field>
 								</page>
