@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model='ir.ui.view' id='add_fields_inventario'>
+			<field name='name'>add_fields_inventario_general</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_only_form_view"/>
+		    <field name="arch" type="xml">		    	
+	            <xpath expr="//page[@name='general_information']//field[@name='barcode']" position="after">
+	            	<field name="x_editorial" string="Editorial" domain="[('category_id.name','=','editorial')]">
+						
+					</field>
+					<field name="x_autor" string="Autor" domain="[('category_id.name','=','autor')]">
+
+					</field>        	              
+	            </xpath>
+		    </field>
+		</record>
+
+	</data>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--para cometar-->
+<odoo>
+	<data>
+		<record id="categoria_1" model="res.partner.category">
+			<field name="category_id">1</field>
+			<field name="name">autor</field>			
+		</record>
+		<record id="categoria_2" model="res.partner.category">
+			<field name="category_id">2</field>
+			<field name="name">editorial</field>
+		</record>
+	</data>
+</odoo>

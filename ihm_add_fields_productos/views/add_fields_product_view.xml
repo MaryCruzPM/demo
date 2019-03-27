@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="add_fields_product_view" model="ir.ui.view"><!--esta vista pertenece al modelo-->
+            <field name="name">add.fields.product.view</field><!--texto arbitrario pero se utlizia esta forma por convención-->
+            <field name="model">product.template</field><!--texto arbitrario pero se utlizia esta forma por convención, viene del modelo base-->
+            <field name="inherit_id" ref="product.product_template_form_view"></field><!--Referencía al alemento heredado por su ID-->
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='purchase_ok']" position="after">
+                    <div>
+                        <field name="es_inmueble" groups="ihm_ocultar_validar.group_director"/>
+                        <label for="es_inmueble" groups="ihm_ocultar_validar.group_director"/>
+                    </div>
+                    <!--                    <div>
+                        <field name="es_bien_adicional" attrs="{'invisible':[('es_inmueble', '!=', True)]}"/>
+                        <label for="es_bien_adicional" attrs="{'invisible':[('es_inmueble', '!=', True)]}"/>
+                    </div>
+                    <group>
+                        <field name="tipo_bien_adicional" attrs="{'invisible':[('es_bien_adicional', '!=', True)]}"/>
+                    </group>
+                    <div>
+                        <label for="parent_id" attrs="{'invisible':[('es_bien_adicional', '!=', True)]}"/>
+                        <field name="parent_id" attrs="{'invisible':[('es_bien_adicional', '!=', True)]}" domain="[('es_inmueble', '=', True)]"/>
+                    </div>-->
+                </xpath>
+                <xpath expr="//page[@name='general_information']" position='after'>
+                    <page string="Inmueble" name="inmueble" attrs="{'invisible':[('es_inmueble', '!=', True)]}" groups="ihm_ocultar_validar.group_director">
+                        <group>
+                            <group>
+                                <field name="numero"></field> 
+                                <field name="caracteristicas"></field>
+                                <field name="estatus"></field>
+<!--                                <field name="estatus_ordenado"></field> SE UTILIZA PERO NO SE MUESTRA EN VISTA-->
+                                <field name="x_proyecto_id"  attrs="{'required':[('es_inmueble','=',True)]}"></field>
+                                <field name="cantidad_enganche"></field>
+                                <field name="garantia_id"></field>
+<!--                                <field name="sale_order"></field>-->
+                            </group>
+                        </group>
+                        <group string="Asignacion de elementos">
+                            <field name="x_asignacion_ids" nolabel="1" groups="ihm_ocultar_validar.group_director">
+                                <tree editable="top">
+                                    <field name="elemento_id" domain="[('proyecto_id', '=', parent.x_proyecto_id)]"/>
+                                    <field name="elemento_proyecto_id"></field>
+                                    <field name="elemento_precio_unitario"></field>
+                                    <field name="cantidad"></field>
+                                    <field name="importe" sum="Importe Total"></field>
+                                </tree>
+                            </field>
+                            <group>
+                                <field name="importe_total_elementos"></field>
+                                <button string="Asignar este precio al Inmueble" type="object" name="asignar_precio_inmueble" class="oe_highlight" groups="ihm_ocultar_validar.group_director" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        <!--        HACER SOLO LECTURA EL PRECIO-->
+        <record id="price_manager_form_view_user" model="ir.ui.view">
+            <field name="name">price.manager.form.view.user</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user')])]" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='list_price']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="price_manager_form_view_dir" model="ir.ui.view">
+            <field name="name">price.manager.form.view.dir</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field name="groups_id" eval="[(6,0,[ref('ihm_ocultar_validar.group_director')])]" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='list_price']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </xpath>
+            </field>
+        </record>
+        
+        <!--        SOLO GRUPO DIRECTOR PUEDE VER PRECIO DE COSTE-->
+        <record id="standard_price_perm_dir" model="ir.ui.view">
+            <field name="name">standard.price.perm.dir</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='standard_price']" position="attributes">
+                    <attribute name="groups">ihm_ocultar_validar.group_director</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
